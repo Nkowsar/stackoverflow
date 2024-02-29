@@ -1,0 +1,97 @@
+
+
+
+<!-- <mat-spinner [color]="'primary'" [diameter]="60" [strokeWidth]="6" ></mat-spinner>  -->
+<div class="parent" >
+    <div class="child">
+        <h2 class="question-caption">Post Question</h2>
+        <h2></h2>
+    <form [formGroup]="validateForm" (ngSubmit)="postQuestion()">
+         <div class="form-input">
+             <mat-form-field appearance="fill" class="sizeOfBox">
+                 <mat-label>Title</mat-label>
+                 <input   matInput placeholder="Title" formControlName="title"/>
+                 <mat-error
+                      *ngIf="validateForm.errors?.['required'] && (validateForm.get('title')?.touched || validateForm.get('title')?.dirty)">
+
+                     Title is required!
+                 </mat-error>
+             </mat-form-field>
+        </div>
+         <div class="form-input">
+             <mat-form-field appearance="fill" class="sizeOfBox">
+                <mat-label>Body</mat-label>
+                 <textarea  matInput rows="6" placeholder="Body" formControlName="body"></textarea>
+                 <mat-error
+                 *ngIf="validateForm.errors?.['required'] && (validateForm.get('body')?.touched || validateForm.get('body')?.dirty)">
+                 Body is required!
+                </mat-error>
+             </mat-form-field>
+         </div>
+    I
+    <div formArrayName="tags">
+
+        <mat-form-field appearance="fill" class="sizeOfBox">
+            <mat-label>Your Tags </mat-label>
+            <mat-chip-list #chipList >
+              <mat-chip *ngFor="let tag of tags; let i=index" [selectable]="selectable"
+                       [removable]="removable" (removed)="remove(i)" >
+                {{tag.value}}
+                <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+              </mat-chip>
+              <input   placeholder="New tag..."
+              
+                     [matChipInputFor]="chipList"
+                     [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                     [matChipInputAddOnBlur]="addOnBlur"
+                     (matChipInputTokenEnd)="add($event)">
+            </mat-chip-list>
+            
+          </mat-form-field>
+          </div>
+        
+        
+        <!-- <div class="form-input"> -->
+            <!-- <mat-form-field appearance="fill">
+                <mat-label>Your Tags </mat-label>
+                <mat-chip-grid #chipGrid aria-label="Enter tags" formControlName="tags">
+                    <mat-chip-row *ngFor="let tag of tags" [selectable]="selectable"
+                    [removable]="removable" (removed)="remove(tag)">
+                     {{tag.name}}
+                    <button matChipRemove [attr.aria-label]="'remove ' + tag.name"> 
+                        <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+                     </button> 
+                </mat-chip-row>
+                <input placeholder="New tag..." [matChipInputFor]="chipGrid"
+                    [matChipInputSeparatorKeyCodes]="separatorKeysCodes" 
+                    [matChipInputAddOnBlur]="addOnBlur" (matChipInputTokenEnd)="add($event)" />
+                 </mat-chip-grid>
+            </mat-form-field> -->
+
+            <!-- <mat-form-field appearance="fill">
+                <mat-label>Your Tags </mat-label>
+                <mat-chip-list #chipList >
+                  <mat-chip *ngFor="let tag of tags" [selectable]="selectable"
+                           [removable]="removable" (removed)="remove(tag)" >
+                    {{tag.name}}
+                    <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+                  </mat-chip>
+                  <input placeholder="New tag..."
+                  formControlName="tags"
+                         [matChipInputFor]="chipList"
+                         [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                         [matChipInputAddOnBlur]="addOnBlur"
+                         (matChipInputTokenEnd)="add($event)">
+                </mat-chip-list>
+                
+              </mat-form-field>
+              
+        </div> -->
+        <button mat-raised-button color="secondary" class="login-form-button login-form-margin" type="submit"
+        [disabled]="validateForm.invalid" >
+            Post Question
+
+        </button>
+</form>
+</div>
+</div>

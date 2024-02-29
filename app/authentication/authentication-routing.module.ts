@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
+//import { NoAuthGuard } from '../auth-gaurds/noAuth-gaurd/no-auth.guard';
 
 const routes: Routes = [
   {path:'login',component:LoginComponent},

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/auth-services/auth-service/auth.service';
-
-
+//import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -11,7 +11,7 @@ import { AuthService } from 'src/app/auth-services/auth-service/auth.service';
 export class LoginComponent implements OnInit {
 
   showSuccessMessage=false;
-  constructor(private service:AuthService) { }
+  constructor(private service:AuthService,private router:Router) { }
 
   ngOnInit(): void {
   }
@@ -28,10 +28,23 @@ export class LoginComponent implements OnInit {
   loginFormSubmitted(){
     
       //console.log("logged in successfull");
-      this.service.login(this.loginForm.value).subscribe((response)=>{
-        console.log(response);
-      })
+      this.service.login(this.loginForm.value).subscribe(
+        (response) => {
+          console.log(response);
+            this.router.navigateByUrl("/user/dashboard");
+            //this.toastr.success("Hurray","login Successfull");
+        },
+        // (error) =>{
+        //     this.toastr.error("error","bad credentials");
+        // }
+      )
       
+
+      // this.service.login({}).subscribe(
+      //   (data)=>{},
+      //   (error) => {},
+      //   () => {}
+      // );
     
   }
   

@@ -34,9 +34,6 @@ showSuccessMessage=false;
   registerFormSubmitted(){
     if(this.password.value==this.retype_Password.value ){
       console.log("Submitted");
-      
-     
-      
       this.service.signup(this.registerForm.value).subscribe((response)=>{
         console.log(response);
         this.router.navigateByUrl("/auth/login");

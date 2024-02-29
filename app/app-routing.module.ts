@@ -1,13 +1,19 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LandingpageComponent } from './landingpage/landingpage.component';
+import { DashboardComponent } from './user/components/dashboard/dashboard.component';
 
 
 const routes: Routes = [
-  { path: 'auth', 
-  loadChildren: () => import('./authentication/authentication.module').then(m => m.AuthenticationModule) },
-  {path:'',component:LandingpageComponent}
-  
+  {
+    path: 'auth',
+    loadChildren: () => import('./authentication/authentication.module').then(m => m.AuthenticationModule)
+  },
+  {
+    path: 'user',
+    loadChildren: () => import('./user/user.module').then(m => m.UserModule)
+  },
+  { path: '', component: DashboardComponent }
+
 ];
 
 @NgModule({

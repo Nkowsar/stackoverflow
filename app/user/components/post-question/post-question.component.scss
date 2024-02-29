@@ -1,0 +1,41 @@
+
+.parent {
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    height: 100vh;
+    }
+    .child {
+    
+    max-width: 1000px;
+    width: 90%;
+    padding: 20px;
+    text-align: center;
+    background-color: #fef2f5;
+    border-radius: 4px;
+    box-shadow: 2px 6px rgba(0, 0, 0, 0.1);
+    }
+    .question-caption {
+    font-size: 24px;
+    
+    margin-bottom: 20px;
+    }
+    .form-input {
+   // width: 90%;
+    margin-bottom: 13px;
+
+    }
+    .sizeOfBox{
+       width:50%;
+       
+        
+    }
+    .login-form-button {
+    width: 50%;
+    
+    }
+   @media(max-width:600px){
+    .child{
+        width:100%;
+    }
+   }
